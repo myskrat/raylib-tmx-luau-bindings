@@ -208,7 +208,7 @@ local tmx_map = FFI.struct(
         {tmx_stagger_index = int},
         {tmx_stagger_axis = int},
         {hexsidelength = int},
-        {backgroundcolor = uint},
+        {backgroundcolor = Color},
         {tmx_map_renderorder = int},
         {properties = tmx_properties},
         {ts_head = tmx_tileset_list},
@@ -221,7 +221,7 @@ local tmx_map = FFI.struct(
 export type tmx_map = typeof(tmx_map:new({}))
 
 export type fns = {
-    LoadTMX: (fileName: FFIPointerType) -> (),
+    LoadTMX: (fileName: FFIPointerType) -> tmx_map,
     UnloadTMX: (map: tmx_map) -> (),
     ColorFromTMX: (color: Color) -> (),
     DrawTMX: (map: tmx_map, posX: number, posY: number, tint: Color) -> (),
